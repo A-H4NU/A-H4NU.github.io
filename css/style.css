@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cat-bg: var(--ctp-bg);
+  --color-cat-card: var(--ctp-card);
+  --color-cat-border: var(--ctp-border);
+  --color-cat-text: var(--ctp-text);
+  --color-cat-subtext: var(--ctp-subtext);
+  --color-cat-accent: var(--ctp-accent);
+  --color-cat-hover: var(--ctp-hover);
+}
+
+/* Catppuccin Theme Definitions */
+:root {
+    --ctp-bg: #dce0e8;
+    --ctp-card: #eff1f5;
+    --ctp-border: #ccd0da;
+    --ctp-text: #4c4f69;
+    --ctp-subtext: #6c6f85;
+    --ctp-accent: #8839ef;
+    --ctp-hover: #e6e9ef;
+}
+
+html.dark {
+    --ctp-bg: #24273a;
+    --ctp-card: #363a4f;
+    --ctp-border: #494d64;
+    --ctp-text: #cad3f5;
+    --ctp-subtext: #a5adcb;
+    --ctp-accent: #c6a0f6;
+    --ctp-hover: #494d64;
+}
+
+body { font-family: 'Inter', sans-serif; }
+
+/* Smooth transitions */
+body, div, a, svg, span, p, h1, h2, h3 {
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}

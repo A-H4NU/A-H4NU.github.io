@@ -1,0 +1,26 @@
+#!/bin/sh
+
+set -xe
+
+# Check if relevant files are part of the commit
+if ! git diff --cached --name-only | grep -E 'index.html|css/style.css|js/main.js' > /dev/null; then
+    # If no relevant files are changed, skip the build to save time
+    exit 0
+fi
+
+echo "🎨 Rebuilding Tailwind CSS..."
+
+# Run the build command
+# Adjust path to ./tailwindcss if you move the binary later
+./tailwindcss -i css/style.css -o css/output.css --minify
+
+# Check if build succeeded
+if [ $? -ne 0 ]; then
+    echo "❌ Tailwind build failed. Commit aborted."
+    exit 1
+fi
+
+# Add the generated file to the commit
+git add css/output.css
+
+echo "✅ CSS updated and added to commit."
